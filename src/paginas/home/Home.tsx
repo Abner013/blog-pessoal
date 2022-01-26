@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Box, Grid, Button } from "@material-ui/core";
 import './Home.css'; //componete esta importando o css
+
 function Home() {
     return (
         <>
@@ -13,7 +14,7 @@ function Home() {
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
                         </Box>
-                        <Button variant="outlined" className="botao">Postagens</Button>
+                        <Button variant="outlined" className="botao">Olhar Postagens</Button>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
