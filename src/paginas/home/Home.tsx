@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Box, Grid, Button } from "@material-ui/core";
-import './Home.css'; //componete esta importando o css
+import TabPostagem from "../../components/postagens/tabpostagem/tabpostagem";
+import ModalPostagem from "../../components/postagens/modalPostagem/modalPostagem";
+import './Home.css';
+import { useHistory } from "react-router-dom";
+import useLocalStorage from "react-use-localstorage";
 
 function Home() {
+
+    let history = useHistory();
+    const [token, setToken] = useLocalStorage('token');
+
+    useEffect (() => {
+        if (token == '') {
+            alert("Você precisa estar legado")
+            history.push("/logar")
+        }
+    }, [token])
+
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -13,6 +28,7 @@ function Home() {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
+                            <ModalPostagem />
                         </Box>
                         <Button variant="outlined" className="botao">Olhar Postagens</Button>
                     </Box>
@@ -29,5 +45,6 @@ function Home() {
 
 export default Home;
 
+// import './Home.css'; -> componete esta importando o css
 // para a fazer a estilização usamos no css ClassName, no css puro usamos css
 // na propriedade grid para definir o tamanho da tela em extramento pequeno usa se a propriedade xs - xs = {12}
