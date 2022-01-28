@@ -137,3 +137,6 @@ function CadastroPost() {
     )
 }
 export default CadastroPost;
+
+
+// em cadastrocomponent qual função envia as informações para a api ? => function onSubmit()
