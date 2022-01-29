@@ -4,18 +4,18 @@ import TabPostagem from "../../components/postagens/tabpostagem/tabpostagem";
 import ModalPostagem from "../../components/postagens/modalPostagem/modalPostagem";
 import './Home.css';
 import { useHistory } from "react-router-dom";
-//import useLocalStorage from "react-use-localstorage";
 import { useSelector } from "react-redux";
-import { TokenState } from '../../store/tokens/tokensReducer'; 
+import { TokenState } from '../../store/tokens/tokensReducer';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
     let history = useHistory();
-    const token = useSelector <TokenState, TokenState["tokens"]>(
+    const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
 
-    useEffect (() => {
+    useEffect(() => {
         if (token == '') {
             alert("Você precisa estar legado")
             history.push("/logar")
@@ -34,7 +34,9 @@ function Home() {
                         <Box marginRight={1}>
                             <ModalPostagem />
                         </Box>
-                        <Button variant="outlined" className="botao">Olhar Postagens</Button>
+                        <Link to="/posts" className="text-decorator-none">
+                            <Button variant="outlined" className="botao">Olhar Postagens</Button>
+                        </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
@@ -44,7 +46,7 @@ function Home() {
                 </Grid>
             </Grid>
         </>
-    )
+    );
 }
 
 export default Home;
